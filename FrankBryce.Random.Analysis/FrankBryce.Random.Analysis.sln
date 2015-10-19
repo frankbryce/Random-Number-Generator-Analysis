@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrankBryce.Random.Analysis", "FrankBryce.Random.Analysis.csproj", "{18200175-F354-417C-A45F-A85C14D95A5B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrankBryce.Random.Generator", "..\FrankBryce.Random.Generator\FrankBryce.Random.Generator.csproj", "{705095AF-0058-49DE-9625-312F3E544555}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrankBryce.Random.GeneratorTests", "FrankBryce.Random.GeneratorTests\FrankBryce.Random.GeneratorTests.csproj", "{B088D4D1-2973-4EE8-AEFF-CE8C12FFC76C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{18200175-F354-417C-A45F-A85C14D95A5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18200175-F354-417C-A45F-A85C14D95A5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18200175-F354-417C-A45F-A85C14D95A5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{705095AF-0058-49DE-9625-312F3E544555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{705095AF-0058-49DE-9625-312F3E544555}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{705095AF-0058-49DE-9625-312F3E544555}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{705095AF-0058-49DE-9625-312F3E544555}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B088D4D1-2973-4EE8-AEFF-CE8C12FFC76C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B088D4D1-2973-4EE8-AEFF-CE8C12FFC76C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B088D4D1-2973-4EE8-AEFF-CE8C12FFC76C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B088D4D1-2973-4EE8-AEFF-CE8C12FFC76C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
