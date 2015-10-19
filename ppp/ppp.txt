@@ -1,0 +1,124 @@
+PPP.TXT:	(for v3.0 of PPP CryptoSystem)
+____________________________________________________________________
+
+Please see the Gibson Research Corporation PPP web pages for complete
+and current documentation about the theory and operation of this code.
+
+https://www.GRC.com/ppp.htm
+
+Also, please ALWAYS VERIFY the Authenticode Digital Signature of any
+sensitive cryptographic software published by Gibson Research. Our
+crypto software will ALWAYS be wrapped in a valid digital signature.
+
+Thank you for your interest in our work. I hope you will find this PPP
+CryptoSystem implementation interesting and useful.
+
+Steve Gibson
+GIBSON RESEARCH CORPORATION
+December 15th, 2007
+http://www.GRC.com
+____________________________________________________________________
+
+PPP.EXE v3.0 features:
+
+* SHA256 hashing of a provided ASCII string.
+* Generation of high-quality pseudo-random 256-bit sequence key.
+* PPP.CFG file specifies the passcode character set and passcode length.
+* Generation and output of one to one million passcodes.
+* Sequence key analyzer scans passcode space reporting duplicates.
+* Sequence key finder tests randomly generated sequence keys for collisions.
+____________________________________________________________________
+
+Syntax:	ppp
+
+Invoking ppp.exe without any arguments prints the program version and
+title information. PPP then analyzes the character set and passcode
+length specified by the ppp.cfg file and displays information about the
+equivalent number of binary bits per passcode character, the equivalent
+number of binary bits per passcode, and the total number of possible
+passcodes.
+
+____________________________________________________________________
+
+Syntax:	ppp ""
+
+When given a null string, ppp.exe generates and outputs a pseudo-random
+256-bit sequence key, displayed as a 64-character lower-case HEX string.
+This string will be globally unique and is suitable for direct use in
+any secure PPP application.
+
+____________________________________________________________________
+
+Syntax:	ppp "zombie"
+
+Given a string, the SHA256 hash of the string is returned. Enclosing
+the string within double quotes is optional and only necessary to
+resolve any ambiguity which might otherwise result.
+
+____________________________________________________________________
+
+Syntax: ppp <64-character hex sequence key> n [count]
+        ppp "zombie" n [count]
+
+Requests the generation of one or more passcodes using the provided
+sequence key (in either hex or passphrase format), beginning with
+passcode 'n'. If the count is omitted only one passcode will be
+generated and displayed. Up to one million successive passcodes
+can be generated and displayed.  Passcodes are numbered from zero,
+so the first passcode is requested as passcode '0'.
+
+____________________________________________________________________
+
+Syntax: ppp * [range]      (range defaults to 100,000 passcodes)
+
+Given the current passcode character set and length specification,
+this performs a "sequence key search" for keys having increasingly
+larger minimum distances between identical passcodes. If the 'range'
+is not specified the first 100,000 passcodes are searched for the
+minimum distance between any identical passcods. (The search will
+continue until it is interrupted with Ctrl-C on the keyboard.)
+
+This function can only be used with passcodes having a maximum of
+32 bits of effective resolution.
+
+____________________________________________________________________
+
+Syntax: ppp <64-character hex sequence key> ? [count]
+        ppp "zombie" ? [count] (count defaults to 1,000,000 passcodes)
+
+Given the current passcode character set, length specification and
+provided sequence key (in either hex or passphrase format), this
+generates "count" number of passcodes (where count defaults to one
+million) then scans the sequence key's passcode sequence reporting
+upon any duplicates found within 1,000 passcodes of each other.
+
+This function can only be used with passcodes having a maximum of
+32 bits of effective resolution.
+
+====================================================================
+
+PPP.CFG File Format:
+
+ONLY the first two lines of the ppp.cfg file are significant, so any
+additional data, other configurations, notes, comments, etc. can be
+appended below the first two lines for convenience.
+
+The first line contains the characters of the passcode character set.
+Duplicate characters and the space character are permitted and will
+all be significant, but they would not normally be recommended.  The
+ordering of the characters on the line is NOT significant since the
+PPPv3 specification requires that they be sorted in ASCII sequence
+before the character set is used to generate passcides.
+
+The second line contains a single decimal number specifying the
+length of number of characters per passcode.
+
+The balance of the file following those two lines will be ignored and
+may contain other "offline" passcode formats, notes, or anything at all.
+
+Here's a sample PPP specification for a 64-character alphabet with
+4 characters per passcode:
+
+23456789!@#%+=:?abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPRSTUVWXYZ
+4
+
